@@ -1,0 +1,516 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Magic Mallys | Digital Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #10b981; /* Emerald */
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --secondary: #3b82f6; /* Blue */
+            --dark-bg: #000a0a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hintergrund-Effekt */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 1rem 8%;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-nav {
+            background: var(--primary);
+            color: #000 !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+        }
+
+        .hero-text { max-width: 650px; }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons { display: flex; gap: 1rem; }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-primary:hover { box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-2px); }
+
+        .btn-secondary { background: var(--glass); color: #fff; border: 1px solid var(--glass-border); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .hero-image img {
+            width: 400px;
+            max-width: 100%;
+            filter: drop-shadow(0 0 30px var(--primary-glow));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- SECTIONS --- */
+        section { padding: 8rem 8%; }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-dim); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Produkte-Sektion optisch abheben */
+        #products .glass-card {
+            border-left: 4px solid var(--secondary);
+        }
+
+        /* --- VIDEO AREA --- */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
+        }
+
+        .footer-video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            filter: saturate(1.2) brightness(0.6);
+        }
+
+        .video-content-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,10,10,0.6) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-inner {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .audio-control {
+            position: absolute;
+            top: 30px; right: 30px;
+            background: var(--primary);
+            color: #000;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10;
+        }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            background: var(--glass);
+            padding: 4rem;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: inherit;
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: #000;
+            padding: 5rem 8% 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 0.8rem; }
+        .footer-column ul li a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
+        .footer-column ul li a:hover { color: var(--primary); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .navbar { padding: 1.5rem 5%; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 80%; height: 100vh;
+                background: rgba(0, 10, 10, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s;
+                backdrop-filter: blur(20px);
+            }
+            .nav-links.active { right: 0; }
+            #hero { flex-direction: column; text-align: center; justify-content: center; gap: 3rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar" id="navbar">
+        <a href="#" class="logo">Magic<span>Mallys</span></a>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#products">Produkte</a>
+            <a href="#contact">Kontakt</a>
+            <a href="#contact" class="btn-nav">Projekt Starten</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-text">
+            <h1>Sichtbarkeit ist kein Zufall, sondern Strategie.</h1>
+            <p>Wir entwickeln Websites, Apps und Datenautomatisierung, die Ihr Unternehmen zukunftssicher machen. Individuell von <strong>Moustapha Sylla</strong> und seinem Expertenteam.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Jetzt anfragen <i class="fas fa-paper-plane"></i></a>
+                <a href="#services" class="btn btn-secondary">Unsere Arbeit</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://cdn-icons-png.flaticon.com/512/2010/2010990.png" alt="Tech Visual">
+        </div>
+    </section>
+
+    <section id="services" class="reveal">
+        <div class="section-header">
+            <h2>Unsere Dienstleistungen</h2>
+            <p>Smarte Lösungen für digitale Herausforderungen</p>
+        </div>
+        <div class="grid">
+            <div class="glass-card">
+                <span class="card-icon">🌐</span>
+                <h3>Webentwicklung</h3>
+                <p>Hochperformante, SEO-optimierte Websites und E-Commerce Lösungen.</p>
+            </div>
+            <div class="glass-card">
+                <span class="card-icon">🤖</span>
+                <h3>KI-Integration</h3>
+                <p>Python-gestützte Büroautomatisierung und Web-Scraping für effiziente Workflows.</p>
+            </div>
+            <div class="glass-card">
+                <span class="card-icon">📊</span>
+                <h3>Datenanalyse</h3>
+                <p>Interaktive Visualisierungen mit Plotly und Pandas für klare Business-Insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="reveal">
+        <div class="section-header">
+            <h2>Spezial-Lösungen</h2>
+            <p>Maßgeschneiderte Automatisierung für Ihr Business</p>
+        </div>
+        <div class="grid">
+            <div class="glass-card">
+                <span class="card-icon">📈</span>
+                <h3>Excel-Automatisierung</h3>
+                <p>VBA-Makros und Power Query für fehlerfreie, automatische Datenverarbeitung.</p>
+            </div>
+            <div class="glass-card">
+                <span class="card-icon">📱</span>
+                <h3>Excel zu Web/App</h3>
+                <p>Migration Ihrer komplexen Excel-Tabellen in sichere, skalierbare Web-Applikationen.</p>
+            </div>
+            <div class="glass-card">
+                <span class="card-icon">🖥️</span>
+                <h3>Dashboards</h3>
+                <p>Echtzeit-KPI-Tracking und automatisierte Reporting-Systeme für Entscheider.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="final-cta" class="reveal">
+        <div class="video-container">
+            <video id="ctaVideo" autoplay muted loop playsinline class="footer-video">
+                <source src="{% static 'src/media/vids/magic_mallys.mp4' %}" type="video/mp4">
+            </video>
+            <div class="video-content-overlay">
+                <button id="muteBtn" class="audio-control"><i class="fas fa-volume-mute"></i></button>
+                <div class="cta-inner">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Bereit für den digitalen Vorsprung?</h2>
+                    <p style="margin-bottom: 2rem; color: var(--text-dim);">Lassen Sie uns Ihre Vision in performanten Code verwandeln. Individuell, automatisiert und zukunftssicher.</p>
+                    <a href="#contact" class="btn btn-primary">Projekt jetzt starten <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="contact-container">
+            <div>
+                <h2>Lass uns etwas erschaffen.</h2>
+                <p style="margin: 1.5rem 0; color: var(--text-dim);">Haben Sie eine Idee? Wir haben die Technik. Schreiben Sie uns eine Nachricht.</p>
+                <div style="margin-top: 2rem;">
+                    <p style="margin-bottom: 1rem;"><i class="fas fa-envelope" style="color: var(--primary); margin-right: 10px;"></i> contact@magic-ms.de</p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 10px;"></i> Wilhelmshaven, Deutschland</p>
+                </div>
+            </div>
+            <form id="contactForm">
+                <input type="text" placeholder="Vollständiger Name" required>
+                <input type="email" placeholder="E-Mail Adresse" required>
+                <textarea rows="5" placeholder="Beschreiben Sie Ihr Projekt" required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Nachricht Senden</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Magic<span>Mallys</span></div>
+                <p style="margin-top: 1rem; color: var(--text-dim);">Innovative Digitallösungen für Unternehmen. Von Websites bis zur Datenautomatisierung.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Webentwicklung</a></li>
+                    <li><a href="#services">KI-Integration</a></li>
+                    <li><a href="#products">Automatisierung</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Unternehmen</h4>
+                <ul>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">AGB</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Social</h4>
+                <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
+                    <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.9rem;">
+            &copy; 2026 Magic Mallys. Realisiert von Moustapha Sylla.
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Mobile Menu
+        const menuBtn = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.querySelector('i').classList.toggle('fa-bars');
+            menuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Video Mute/Unmute
+        const video = document.getElementById('ctaVideo');
+        const muteBtn = document.getElementById('muteBtn');
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        });
+
+        // Form Submit
+        document.getElementById('contactForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Danke für Ihre Nachricht! Wir melden uns zeitnah.');
+            e.target.reset();
+        };
+    </script>
+</body>
+</html>

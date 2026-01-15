@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magic Mallys</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="../src/mjs/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="../src/css/index.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <img src="../src/media/imgs/mylog1.png" width="100" height="100" alt="Logo" />
+    <div class="logo">Magic Mallys</div>
+    <button class="menu-toggle" id="menuToggle">&#9776;</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Services</a>
+      <a href="#">Produits</a>
+      <a href="#">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header><br><br>
+
+  <section id="hero">
+    <div class="hero-text">
+      <h1>SI VOUS N'ÊTES PAS EN LIGNE, VOUS ÊTES INVISIBLE</h1>
+
+      <b class="mJob">Sites Web personnalisés, applications mobiles, systèmes de données, plateformes e-commerce, et plus.</b>
+      <br>
+      Solutions numériques intelligentes — Conçues pour la croissance Web, mobile et systèmes adaptés à votre entreprise.
+
+      <p>Bonjour, je suis Moustapha Sylla, fondateur de <strong>Magic Mallys</strong>, un studio de développement numérique qui aide les entreprises à croître grâce à des sites web, applications et outils automatisés sur mesure.</p>
+
+      <br>
+      <div class="hero-buttons">
+        <button class="start-btn">Commencer un projet</button>
+        <button class="shop-btn">Boutique</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="../src/media/imgs/IMG-20250715-WA0004_1.png" alt="Mockup">
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Nos Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Développement Web</h3>
+        <p>Sites web optimisés pour le SEO adaptés à tous types d'entreprises. E-commerce inclus.</p>
+        <a href="#contact" class="cta green">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Outils Bureautiques</h3>
+        <p>Python, SQL, automatisation, scraping et optimisation pour analystes.</p>
+        <a href="#contact" class="cta blue">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Plateforme de Vente</h3>
+        <p>Livraison automatisée, tableaux de bord analytiques.</p><br>
+        <a href="#contact" class="cta purple">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Dashboard avec Plotly</h3>
+        <p>Tableaux de bord interactifs avec Pandas et Plotly Dash.</p>
+        <a href="#contact" class="cta orange">Commencer</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Nos Produits</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Gadgets Numériques</h3>
+        <p>Des gadgets intelligents pour une conduite plus sûre et agréable — caméras, chargeurs, outils.</p><br>
+        <a href="#contact" class="cta green">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Appareils Intelligents</h3>
+        <p>Améliorez votre vie avec des assistants intelligents, automatisation et technologies de sécurité.</p>
+        <a href="#contact" class="cta blue">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Plateforme de Vente</h3>
+        <p>Les meilleurs modèles avec la technologie la plus récente à prix compétitifs.</p><br>
+        <a href="#contact" class="cta purple">Commencer</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Logiciel Import/Export</h3>
+        <p>Logistique, codes douaniers, suivi produit.</p>
+        <a href="#contact" class="cta orange">Commencer</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-wrapper">
+      <div class="contact-form">
+        <h2>Contactez-nous</h2>
+        <p>Démarrez votre projet avec Magic Mallys</p>
+        <form onsubmit="submitForm(event)">
+          <label>Nom Complet <input type="text" name="full_name" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Message <textarea name="message" rows="4" required></textarea></label>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Informations de contact</h3>
+        <p><i class="fas fa-envelope"></i></p>
+        <p><i class="fas fa-phone"></i> +49 4421 4602 552</p>
+        <p><i class="fas fa-map-marker-alt"></i> Bordumstraße 1, 26382 Wilhelmshaven</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2024 (c) Magic Mallys. Tous droits réservés.<br>
+    Fondateur : M. Moustapha Sylla
+  </footer>
+
+</body>
+</html>

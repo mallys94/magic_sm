@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magic Mallys</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="static/src/mjs/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/src/css/index.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <img src="static/src/media/imgs/mylog1.png" width="100" height="100" alt="Logo" />
+    <div class="logo">Magic Mallys</div>
+    <button class="menu-toggle" id="menuToggle">&#9776;</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Services</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header><br><br>
+
+  <section id="hero">
+    <div class="hero-text">
+      <h1>IF YOU'RE NOT ONLINE, YOU'RE INVISIBLE</h1>
+
+      <b class="mJob">Custom websites, mobile apps, data systems, e-commerce platforms, and more.</b>
+      <br>
+      Smart digital solutions — Designed for web growth, mobile, and systems tailored to your business.
+
+      <p>Hello, I’m Moustapha Sylla, founder of <strong>Magic Mallys</strong>, a digital development studio that helps businesses grow through custom websites, apps, and automated tools.</p>
+
+      <br>
+      <div class="hero-buttons">
+        <button class="start-btn">Start a Project</button>
+        <button class="shop-btn">Shop</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="static/src/media/imgs/IMG-20250715-WA0004_1.png" alt="Mockup">
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>SEO-optimized websites tailored for all types of businesses. Includes e-commerce.</p>
+        <a href="#contact" class="cta green">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Office Tools</h3>
+        <p>Python, SQL, automation, scraping and optimization for analysts.</p>
+        <a href="#contact" class="cta blue">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Sales Platform</h3>
+        <p>Automated delivery, analytical dashboards.</p><br>
+        <a href="#contact" class="cta purple">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Dashboard with Plotly</h3>
+        <p>Interactive dashboards with Pandas and Plotly Dash.</p>
+        <a href="#contact" class="cta orange">Start</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Our Products</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Digital Gadgets</h3>
+        <p>Smart gadgets for safer and more enjoyable driving — cameras, chargers, tools.</p><br>
+        <a href="#contact" class="cta green">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Smart Devices</h3>
+        <p>Enhance your life with smart assistants, automation, and security technologies.</p>
+        <a href="#contact" class="cta blue">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>Sales Platform</h3>
+        <p>Top models with the latest technology at competitive prices.</p><br>
+        <a href="#contact" class="cta purple">Start</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Import/Export Software</h3>
+        <p>Logistics, customs codes, product tracking.</p>
+        <a href="#contact" class="cta orange">Start</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-wrapper">
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <p>Start your project with Magic Mallys</p>
+        <form onsubmit="submitForm(event)">
+          <label>Full Name <input type="text" name="full_name" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Message <textarea name="message" rows="4" required></textarea></label>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><i class="fas fa-envelope"></i></p>
+        <p><i class="fas fa-phone"></i> +49 4421 4602 552</p>
+        <p><i class="fas fa-map-marker-alt"></i> Bordumstraße 1, 26382 Wilhelmshaven</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2024 (c) Magic Mallys. All rights reserved.<br>
+    Founder: Moustapha Sylla & Teams
+  </footer>
+
+</body>
+</html>
