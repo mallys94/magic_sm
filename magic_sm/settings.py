@@ -89,15 +89,13 @@ DATABASES = {
 }
 """
 # 1. DATABASE CONFIG (Fixes the SQLite error)
+# This parses the 'DATABASE_URL' environment variable from Vercel/Neon automatically
 DATABASES = {
-    'default': {
-        'ENGINE'  : 'django.db.backends.postgresql',
-        'NAME'    : os.getenv('DB_NAME'),
-        'USER'    : os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'if#MS@.1'),
-        'HOST'    : os.getenv('DB_HOST', 'localhost'),
-        'PORT'    : os.getenv('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -130,10 +128,15 @@ USE_I18N = True
 USE_TZ = True
 
 
-# 3. STATIC FILES CONFIG (Fixes the Output Directory error)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# Match this exactly to the "distDir" in your vercel.json
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
