@@ -91,12 +91,12 @@ DATABASES = {
 # 1. DATABASE CONFIG (Fixes the SQLite error)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
+        'ENGINE'  : 'django.db.backends.postgresql',
+        'NAME'    : os.getenv('DB_NAME'),
+        'USER'    : os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'if#MS@.1'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'HOST'    : os.getenv('DB_HOST', 'localhost'),
+        'PORT'    : os.getenv('DB_PORT', '5432'),
     }
 }
 # Password validation
