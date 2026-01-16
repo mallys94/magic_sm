@@ -2,14 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "magic_ms/wsgi.py",
+      "src": "magic_sm/wsgi.py", 
       "use": "@vercel/python",
       "config": { "runtime": "python3.12" }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "staticfiles" }
     }
   ],
   "routes": [

@@ -93,16 +93,13 @@ DATABASES = {
 IS_PRODUCTION = os.getenv('VERCEL_ENV') == 'production'
 
 if IS_PRODUCTION:
-    # Use PostgreSQL for production
+    # This will automatically parse the 'DATABASE_URL' variable from Vercel
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT', '5432'),
-        }
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
 else:
     # Use SQLite for local development

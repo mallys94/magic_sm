@@ -1,0 +1,402 @@
+:root {
+      --primary-color: #10b981;
+      --heading-size: 2.2rem;
+      --card-bg: #fff;
+      --card-text: #1f2937;
+      --card-radius: 12px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.1);
+      --bg-light: #f9fafb;
+    }
+/*
+###################################################################################################################
+                                   MOBILE - TABLETTE - Portrait & landscape
+###################################################################################################################
+*/
+@media only screen and (max-width: 420px) and (max-height: 920px) {}
+/*###################################################################################################################*/
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    margin-top: 4.5%;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    display: none;
+    padding: 1rem;
+    border-radius: 0 0 0 10px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #444;
+  }
+}
+/*###################################################################################################################*/
+@media (max-height: 500px) and (orientation: landscape) {}
+/*###################################################################################################################*/
+@media only screen and (max-width: 920px) and (max-height: 420px) {}
+/*###################################################################################################################*/
+
+/*
+
+body {}
+
+#de_logo {
+    color: white;
+  }
+
+.navbar nav {
+    margin-bottom: 3px;
+}
+
+.navbar img {
+  width: 100px;
+}
+.hero-image img {
+    margin-top:15%;
+}
+}
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+    
+body {
+  font-family: 'Times-New-Roman', sans-serif;
+  background-image: url('https://www.transparenttextures.com/patterns/circuit-board.png');
+  line-height: 1.6;
+  color: #111;
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  transition: color 0.1s ease;
+}
+
+ifram {
+  margin-top: 25%;
+}
+img {
+  max-width: 110%;
+  border-radius: 8px;
+}
+
+header { height: 60px; }
+
+header:hover .logo {
+  color: black;
+  text-shadow: 1px 5px 2px red;
+}
+
+    /* Navbar */
+header.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 0.5rem 1rem;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 3.8rem;
+  font-family: 'Times New Roman';
+  color: whitesmoke;
+  animation: magicGlow 1s ease-in-out infinite;
+  margin-left: -30%;
+}
+
+    @keyframes magicGlow {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 5px red; }
+      50% { transform: scale(1.05); text-shadow: 0 0 20px red; }
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.8rem;
+      color: black;
+    }
+
+ .a, .a1, .a2, .a3 {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+    /* Hero */
+    #hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem 1rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      font-family: 'Times-New-Roman';
+    }
+    .hero-text .mJob { font-size: 1.2rem; text-shadow: 0.7px 0.7px 0.9px red; }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .hero-text strong {
+      color: red;
+      font-size: 1rem;
+    }
+
+    .hero-buttons button {
+      margin-right: 1rem;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .start-btn { background-color: red; color: white; }
+    .shop-btn { background-color: #333; color: white; }
+
+    .start-btn:hover { background-color: #e60000; }
+    .shop-btn:hover { background-color: #444; }
+
+    .hero-image img {
+      width: 400px;
+      height: 480px;
+      object-fit: cover;
+    }
+    .whspp, .tiktok, .fcbook, .insta, .teleg {
+      color: blue; font-size: 10px; padding-left: 5px;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: var(--heading-size);
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: white;
+      padding: 3%;
+      margin: 1%;
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow);
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+    }
+
+    .cta {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      display: inline-block;
+    }
+
+    .green { background: #10b981; }
+    .blue { background: #3b82f6; }
+    .purple { background: #8b5cf6; }
+    .orange { background: #f97316; }
+
+    /* Contact */
+    #contact {
+      background-color: var(--bg-light);
+    }
+
+    #contact b {
+      text-align: center;
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+
+    .contact-form, .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      color: #ffffff; /* White */
+    }
+
+    .contact-form p {
+      text-align: center;
+      font-family: 'Times-New-Roman';
+      font-size: 30px;
+    }
+    .contact-form  {
+      font-family: 'Times-New-Roman';
+      font-size: 25px;
+      color: darkgreen;
+    }
+    .k_info {
+      font-family: 'Times-New-Roman';
+      font-size: 25px;
+      color: darkgreen;
+    }
+    form label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    form input, form textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+
+    form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #059669;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: black;
+      color: white;
+    }
+
+/*   CSS JUST ms_DE   */
+   @media (max-width: 768px) {
+       #de_logo {
+          margin-left: 2%;
+          font-size: 35px;
+       }
+    }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  color: white;
+  /* width: 120%;
+   position: sticky; 
+  top: 0;
+  z-index: 1000; */
+}
+
+#msteam { color: red; text-decoration: underline; }
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 12px;
+  margin-left: -5%;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #111;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
